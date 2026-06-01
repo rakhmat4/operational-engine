@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Engine - SME Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>⚙️ OpEngine</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" data-page="dashboard" class="nav-link active">📊 Dashboard</a></li>
+                <li><a href="#" data-page="products" class="nav-link">📦 Products</a></li>
+                <li><a href="#" data-page="orders" class="nav-link">🛒 Orders</a></li>
+                <li><a href="#" data-page="settings" class="nav-link">⚙️ Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="user-info">👤 Welcome, User</div>
+            </header>
+
+            <!-- Dashboard Page -->
+            <section id="dashboard" class="page active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Products</h3>
+                        <p class="stat-number" id="total-products">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Orders</h3>
+                        <p class="stat-number" id="total-orders">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Revenue</h3>
+                        <p class="stat-number" id="total-revenue">Rp 0</p>
+                    </div>
+                </div>
+
+                <div class="recent-section">
+                    <h2>Recent Orders</h2>
+                    <div id="recent-orders" class="orders-list"></div>
+                </div>
+            </section>
+
+            <!-- Products Page -->
+            <section id="products" class="page">
+                <div class="page-header">
+                    <h2>Products Management</h2>
+                    <button class="btn btn-primary" id="add-product-btn">+ Add Product</button>
+                </div>
+
+                <!-- Add Product Form -->
+                <div id="add-product-form" class="form-container hidden">
+                    <form class="form">
+                        <h3>Add New Product</h3>
+                        <input type="text" placeholder="Product Name" id="product-name" required>
+                        <input type="text" placeholder="Category" id="product-category">
+                        <input type="number" placeholder="Price (Rp)" id="product-price" required>
+                        <input type="number" placeholder="Quantity" id="product-quantity" required>
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-success">Save Product</button>
+                            <button type="button" class="btn btn-secondary" id="cancel-product-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Products List -->
+                <div class="products-grid" id="products-list"></div>
+            </section>
+
+            <!-- Orders Page -->
+            <section id="orders" class="page">
+                <div class="page-header">
+                    <h2>Orders Management</h2>
+                    <button class="btn btn-primary" id="add-order-btn">+ Create Order</button>
+                </div>
+
+                <!-- Add Order Form -->
+                <div id="add-order-form" class="form-container hidden">
+                    <form class="form">
+                        <h3>Create New Order</h3>
+                        <input type="text" placeholder="Customer Name" id="order-customer" required>
+                        <select id="order-product" required>
+                            <option value="">Select Product</option>
+                        </select>
+                        <input type="number" placeholder="Quantity" id="order-quantity" required>
+                        <input type="number" placeholder="Total Price (Rp)" id="order-price" required>
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-success">Create Order</button>
+                            <button type="button" class="btn btn-secondary" id="cancel-order-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Settings Page -->
+            <section id="settings" class="page">
+                <h2>Settings</h2>
+                <div class="settings-card">
+                    <h3>About Operational Engine</h3>
+                    <p>Version: 1.0.0 (Simplified)</p>
+                    <p>An easy-to-use operational system for Indonesian SMEs</p>
+                    <p>Features: Product Management, Order Tracking, Dashboard Analytics</p>
+                </div>
+                <div class="settings-card">
+                    <h3>Database</h3>
+                    <p>📊 Using SQLite (Local Database - No Setup Required!)</p>
+                    <button class="btn btn-secondary" onclick="alert('Database location: ./data/database.db')">Database Info</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
